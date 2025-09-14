@@ -9,7 +9,12 @@
 	import { Separator } from '$lib/components/ui/separator';
 	import fiatList from '$lib/data/binance-fiat-list.json';
 	import { actionTypes, availableTokensList } from '$lib/exchanges';
-	import { CheckIcon, ChevronsUpDownIcon } from 'lucide-svelte';
+	import {
+		CheckIcon,
+		ChevronsUpDownIcon,
+		GalleryHorizontalIcon,
+		LayoutGridIcon
+	} from 'lucide-svelte';
 	import { Button } from '../ui/button';
 	import {
 		Command,
@@ -119,5 +124,35 @@
 		</div>
 	</div>
 
-	<Refresh />
+	<div class="inline-flex items-center gap-6">
+		<Refresh />
+
+		<div class="space-y-1">
+			<Label class="px-0">View Mode</Label>
+
+			<div class="inline-flex items-center gap-1">
+				<Button
+					title="Grid View"
+					variant="ghost"
+					onclick={() => (filterState.current.viewMode = 'grid')}
+					class={cn('cursor-pointer', {
+						'opacity-50': filterState.current.viewMode !== 'grid'
+					})}
+				>
+					<LayoutGridIcon />
+				</Button>
+
+				<Button
+					title="Horizontal View"
+					variant="ghost"
+					onclick={() => (filterState.current.viewMode = 'horizontal')}
+					class={cn('cursor-pointer', {
+						'opacity-50': filterState.current.viewMode !== 'horizontal'
+					})}
+				>
+					<GalleryHorizontalIcon />
+				</Button>
+			</div>
+		</div>
+	</div>
 </div>

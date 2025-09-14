@@ -35,6 +35,7 @@ export type UserPrefs = {
 	type: 'buy' | 'sell';
 	fiat: string;
 	refreshTimer?: RefreshTimer;
+	viewMode: 'grid' | 'horizontal';
 };
 
 export const filterState = persistedState<UserPrefs>(
@@ -42,17 +43,17 @@ export const filterState = persistedState<UserPrefs>(
 	{
 		selectedToken: 'USDT',
 		type: 'buy',
-		fiat: 'USD'
+		fiat: 'USD',
+		viewMode: 'grid'
 	},
 	{
 		storage: 'local',
 		syncTabs: true,
 		beforeWrite: (value) => {
-			console.log('Saving preferences:', value);
 			return value;
 		},
 		onWriteError: (error) => {
-			console.error('Failed to save preferences:', error);
+			console.error('Error writing to persisted state:', error);
 		}
 	}
 );

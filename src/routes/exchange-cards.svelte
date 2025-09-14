@@ -12,6 +12,7 @@
 	import { ScrollArea } from '$lib/components/ui/scroll-area';
 	import type { ExchangeP2PAd, filterExchangesArr } from '$lib/exchanges';
 	import { fetchUrlBuilder } from '$lib/exchanges/url-builder';
+	import { cn } from '$lib/utils';
 	import { createQuery } from '@tanstack/svelte-query';
 
 	let {
@@ -24,6 +25,7 @@
 	const filterStateType = $derived(filterState.current.type);
 	const filterStateFiat = $derived(filterState.current.fiat);
 	const refreshTimer = $derived(filterState.current.refreshTimer);
+	const viewMode = $derived(filterState.current.viewMode);
 
 	let ads = $derived.by(() =>
 		createQuery<{ responses: null | ExchangeP2PAd[] }>({
@@ -52,7 +54,7 @@
 	);
 </script>
 
-<Card>
+<Card class="w-lg">
 	<CardHeader>
 		<CardTitle class="inline-flex items-center gap-2">
 			<img
@@ -71,7 +73,12 @@
 		{:else if $ads.isError}
 			<p class="text-red-500">Error: {$ads.error.message}</p>
 		{:else if $ads.data?.responses && $ads.data.responses.length > 0}
-			<ScrollArea class="h-[900px] pr-4">
+			<ScrollArea
+				class={cn('pr-4', {
+					'h-[900px]': viewMode === 'grid',
+					'h-[600px]': viewMode === 'horizontal'
+				})}
+			>
 				<div class="grid grid-cols-1 gap-4">
 					{#each $ads.data.responses as ad (ad.advNo)}
 						<Card>
@@ -104,7 +111,7 @@
 							</CardHeader>
 							<CardFooter>
 								<div class="flex flex-wrap gap-1">
-									{#each ad.paymentMethods as payment (payment.identifier)}
+									{#each ad.paymentMethods as payment}
 										<Badge
 											variant="outline"
 											style={`${payment.bgColor ? `background-color: ${payment.bgColor}` : ''}`}

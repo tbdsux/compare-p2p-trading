@@ -20,6 +20,12 @@ export const exchanges = {
 		tokensList: ['USDT', 'BTC', 'ETH', 'USDC', 'TRX', 'DOGE', 'SOL', 'TON'] as string[],
 		icon: 'https://static.mocortech.com/image-host/web/web-app-icon-v2.8970dcc55ed4.png',
 		p2pLink: 'https://www.mexc.co/buy-crypto/p2p'
+	},
+	bitget: {
+		name: 'Bitget',
+		tokensList: ['USDT', 'USDC', 'BTC', 'ETH', 'BGB', 'DAI'] as string[],
+		icon: 'https://www.bitget.com/baseasset/favicon4.png',
+		p2pLink: 'https://www.bitget.com/p2p-trade'
 	}
 } as const;
 

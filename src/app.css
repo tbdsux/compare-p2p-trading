@@ -74,6 +74,9 @@
 }
 
 @theme inline {
+	--breakpoint-3xl: 128rem;
+	--breakpoint-4xl: 160rem;
+
 	--font-sans:
 		'Outfit Variable', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial,
 		sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
