@@ -37,34 +37,34 @@
 	const filterStateFiat = $derived(filterState.current.fiat);
 </script>
 
-<div class="flex h-28 items-center justify-between gap-12 rounded-lg border px-6">
-	<div class="flex h-full items-center gap-12">
-		<div class="space-y-1">
+<div
+	class="flex flex-col items-center justify-between gap-12 rounded-lg border px-6 py-6 lg:h-28 lg:flex-row lg:py-0"
+>
+	<div class="flex h-full w-full flex-col items-start gap-2 lg:flex-row lg:items-center lg:gap-12">
+		<div class="w-full space-y-1 lg:w-auto">
 			<Label class="px-0">Type</Label>
 
 			<Select type="single" bind:value={filterState.current.type}>
-				<SelectTrigger class="w-[100px]">
+				<SelectTrigger class="w-full lg:w-[100px]">
 					{actionTypes[filterStateType]}
 				</SelectTrigger>
 
-				<SelectContent class="w-[100px]">
+				<SelectContent class="w-full lg:w-[100px]">
 					<SelectItem value="buy">Buy</SelectItem>
 					<SelectItem value="sell">Sell</SelectItem>
 				</SelectContent>
 			</Select>
 		</div>
 
-		<Separator orientation="vertical" />
-
-		<div class="space-y-1">
+		<div class="w-full space-y-1 lg:w-auto">
 			<Label class="px-0">Select Token</Label>
 
 			<Select type="single" bind:value={filterState.current.selectedToken}>
-				<SelectTrigger class="w-[200px]">
+				<SelectTrigger class="w-full lg:w-[150px]">
 					{filterStateSelectedToken}
 				</SelectTrigger>
 
-				<SelectContent class="w-[200px]">
+				<SelectContent class="w-full lg:w-[150px]">
 					{#each availableTokensList as token (token)}
 						<SelectItem value={token}>{token}</SelectItem>
 					{/each}
@@ -72,9 +72,7 @@
 			</Select>
 		</div>
 
-		<Separator orientation="vertical" />
-
-		<div class="space-y-1">
+		<div class="w-full space-y-1 lg:w-auto">
 			<Label class="px-0">Fiat List</Label>
 
 			<Popover>
@@ -85,7 +83,7 @@
 							role="combobox"
 							aria-expanded={openFiatList}
 							variant="outline"
-							class="w-[150px] justify-between"
+							class="w-full justify-between lg:w-[150px]"
 						>
 							{filterStateFiat}
 							<ChevronsUpDownIcon class="ml-2 size-4 shrink-0 opacity-50" />
@@ -124,10 +122,12 @@
 		</div>
 	</div>
 
-	<div class="inline-flex items-center gap-6">
+	<Separator orientation="vertical" class="hidden lg:block" />
+
+	<div class="inline-flex items-center gap-8">
 		<Refresh />
 
-		<div class="space-y-1">
+		<div class="space-y-1 text-center">
 			<Label class="px-0">View Mode</Label>
 
 			<div class="inline-flex items-center gap-1">

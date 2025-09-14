@@ -54,7 +54,12 @@
 	);
 </script>
 
-<Card class="w-lg">
+<Card
+	class={cn('lg:w-md', {
+		'w-sm lg:w-md': viewMode === 'horizontal',
+		'w-full': viewMode === 'grid'
+	})}
+>
 	<CardHeader>
 		<CardTitle class="inline-flex items-center gap-2">
 			<img
@@ -115,7 +120,9 @@
 										<Badge
 											variant="outline"
 											style={`${payment.bgColor ? `background-color: ${payment.bgColor}` : ''}`}
-											class="text-neutral-50"
+											class={cn('text-neutral-950 dark:text-neutral-50', {
+												'text-neutral-50': !!payment.bgColor
+											})}
 										>
 											{payment.name}
 										</Badge>
