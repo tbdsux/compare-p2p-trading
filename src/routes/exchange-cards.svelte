@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { filterState } from '$lib/components/filter/stateFilter.svelte';
+	import { filterState, refreshTimers } from '$lib/components/filter/stateFilter.svelte';
 	import { Badge } from '$lib/components/ui/badge';
 	import {
 		Card,
@@ -23,6 +23,7 @@
 	const filterStateSelectedToken = $derived(filterState.current.selectedToken);
 	const filterStateType = $derived(filterState.current.type);
 	const filterStateFiat = $derived(filterState.current.fiat);
+	const refreshTimer = $derived(filterState.current.refreshTimer);
 
 	let ads = $derived.by(() =>
 		createQuery<{ responses: null | ExchangeP2PAd[] }>({
@@ -44,7 +45,9 @@
 				}
 
 				return (await res.json()) as { responses: null | ExchangeP2PAd[] };
-			}
+			},
+			refetchInterval: refreshTimer ? refreshTimers[refreshTimer].value : false,
+			refetchIntervalInBackground: refreshTimer ? true : false
 		})
 	);
 </script>

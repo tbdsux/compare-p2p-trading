@@ -22,6 +22,7 @@
 	import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
 
 	import { cn } from '$lib/utils';
+	import Refresh from './refresh.svelte';
 	import { filterState } from './stateFilter.svelte';
 
 	let openFiatList = $state(false);
@@ -31,23 +32,21 @@
 	const filterStateFiat = $derived(filterState.current.fiat);
 </script>
 
-<div class="flex h-28 items-center justify-start gap-12 rounded-lg border px-6">
+<div class="flex h-28 items-center justify-between gap-12 rounded-lg border px-6">
 	<div class="flex h-full items-center gap-12">
-		<div>
-			<div class="space-y-1">
-				<Label class="px-0">Type</Label>
+		<div class="space-y-1">
+			<Label class="px-0">Type</Label>
 
-				<Select type="single" bind:value={filterState.current.type}>
-					<SelectTrigger class="w-[100px]">
-						{actionTypes[filterStateType]}
-					</SelectTrigger>
+			<Select type="single" bind:value={filterState.current.type}>
+				<SelectTrigger class="w-[100px]">
+					{actionTypes[filterStateType]}
+				</SelectTrigger>
 
-					<SelectContent class="w-[100px]">
-						<SelectItem value="buy">Buy</SelectItem>
-						<SelectItem value="sell">Sell</SelectItem>
-					</SelectContent>
-				</Select>
-			</div>
+				<SelectContent class="w-[100px]">
+					<SelectItem value="buy">Buy</SelectItem>
+					<SelectItem value="sell">Sell</SelectItem>
+				</SelectContent>
+			</Select>
 		</div>
 
 		<Separator orientation="vertical" />
@@ -72,22 +71,6 @@
 
 		<div class="space-y-1">
 			<Label class="px-0">Fiat List</Label>
-
-			<!-- <Select type="single" bind:value={filterState.fiat}>
-			<SelectTrigger class="w-[200px]">
-				{filterState.fiat}
-			</SelectTrigger>
-
-			<SelectContent class="w-[200px]">
-				{#each fiatList as fiat (fiat.currencyCode)}
-					<SelectItem value={fiat.currencyCode}>
-						<img src={fiat.iconUrl} alt={fiat.countryCode} class="size-12" />
-
-						{fiat.currencyCode}
-					</SelectItem>
-				{/each}
-			</SelectContent>
-		</Select> -->
 
 			<Popover>
 				<PopoverTrigger>
@@ -135,4 +118,6 @@
 			</Popover>
 		</div>
 	</div>
+
+	<Refresh />
 </div>
