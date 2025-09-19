@@ -69,7 +69,7 @@
 			</ScrollArea>
 		{:else}
 			<div
-				class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-8 2xl:gap-12 3xl:grid-cols-4 4xl:grid-cols-5"
+				class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:gap-8 xl:grid-cols-3 2xl:gap-12 4xl:grid-cols-4"
 			>
 				{#each filterExchangesArr(filterStateSelectedToken) as exchange (exchange.key)}
 					<ExchangeCards {exchange} />

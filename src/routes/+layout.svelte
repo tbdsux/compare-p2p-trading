@@ -26,7 +26,7 @@
 <ModeWatcher />
 
 <QueryClientProvider client={queryClient}>
-	<main class="container mx-auto space-y-8 px-8 pb-20">
+	<main class="container mx-auto space-y-8 px-8 pb-20 3xl:w-4/5">
 		<Header />
 
 		<hr class="" />

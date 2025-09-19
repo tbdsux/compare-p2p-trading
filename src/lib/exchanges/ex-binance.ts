@@ -48,8 +48,8 @@ export const fetchBinance = async (props: {
 		surplusAmount: item.adv.surplusAmount,
 		tradableQuantity: item.adv.tradableQuantity,
 		fiatSymbol: item.adv.fiatSymbol,
-		minSingleTransAmount: item.adv.maxSingleTransAmount,
-		maxSingleTransAmount: item.adv.minSingleTransAmount,
+		minSingleTransAmount: item.adv.minSingleTransAmount,
+		maxSingleTransAmount: item.adv.maxSingleTransAmount,
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		paymentMethods: item.adv.tradeMethods.map((method: Record<string, any>) => ({
 			type: method.payType,

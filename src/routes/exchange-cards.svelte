@@ -57,7 +57,7 @@
 <Card
 	class={cn('lg:w-md', {
 		'w-sm lg:w-md': viewMode === 'horizontal',
-		'w-full': viewMode === 'grid'
+		'w-full lg:w-full': viewMode === 'grid'
 	})}
 >
 	<CardHeader>
@@ -81,7 +81,7 @@
 			<ScrollArea
 				class={cn('pr-4', {
 					'h-[900px]': viewMode === 'grid',
-					'h-[600px]': viewMode === 'horizontal'
+					'h-[calc(100vh_-_500px)]': viewMode === 'horizontal'
 				})}
 			>
 				<div class="grid grid-cols-1 gap-4">
